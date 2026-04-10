@@ -1,0 +1,130 @@
+:root{
+  --bg-1:#071033;
+  --bg-2:#0b1a3a;
+  --accent:#ff6b6b;
+  --muted:#9fb0ff;
+  --glass: rgba(255,255,255,0.04);
+  --max-width:1200px;
+  --radius:14px;
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --card-elev: 18px 30px 60px rgba(2,6,23,0.6);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--font);
+  background:linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 100%);
+  color:#eaf0ff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+
+.container{
+  width:92%;
+  max-width:var(--max-width);
+  margin:0 auto;
+}
+
+/* Header */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:60;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(7,16,51,0.6), rgba(7,16,51,0.2));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 0;
+}
+.brand-link{color:#fff;font-weight:800;text-decoration:none;font-size:18px}
+.brand .accent{color:var(--accent)}
+.nav a{color:rgba(234,240,255,0.9);text-decoration:none;margin-left:20px;font-weight:600}
+.cta{background:linear-gradient(90deg,#ff7a59,#ff3d8f);padding:8px 12px;border-radius:8px;color:#fff}
+
+/* Hero */
+.hero{padding:64px 0 36px}
+.hero-inner{display:flex;gap:36px;align-items:center;justify-content:space-between}
+.hero-left{flex:1;max-width:640px}
+.eyebrow{color:var(--muted);font-weight:700;margin:0 0 12px}
+h1{font-size:clamp(28px,4.2vw,48px);margin:0 0 18px;line-height:1.02;font-weight:800}
+.lead{color:rgba(234,240,255,0.9);margin-bottom:18px;font-size:16px}
+.hero-ctas{display:flex;gap:12px;margin-bottom:18px}
+.btn{display:inline-block;padding:12px 18px;border-radius:12px;text-decoration:none;cursor:pointer;font-weight:700}
+.btn.primary{background:linear-gradient(90deg,#ff7a59,#ff3d8f);color:white;box-shadow:0 12px 40px rgba(255,60,120,0.12)}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:rgba(234,240,255,0.9)}
+
+/* Parallax scene */
+.hero-right{flex:0 0 420px;display:flex;align-items:center;justify-content:center}
+.scene{width:360px;height:320px;position:relative;perspective:1200px}
+.layer{position:absolute;left:0;top:0;width:100%;height:100%;transform-style:preserve-3d;transition:transform 0.12s linear}
+.layer-bg{background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.03), transparent 20%), linear-gradient(180deg,#0b1a3a 0%, #071033 100%);border-radius:18px;box-shadow:var(--card-elev)}
+.layer-laptop{background:linear-gradient(180deg,#0f2a66,#0b1a3a);border-radius:14px;transform:translateZ(30px) scale(0.98)}
+.layer-rocket{background:transparent;display:flex;align-items:center;justify-content:center;transform:translateZ(60px)}
+.layer-smoke{background:radial-gradient(circle at 50% 80%, rgba(203,213,255,0.12), transparent 30%);border-radius:18px;opacity:0.9;transform:translateZ(10px)}
+
+/* Logos row */
+.logos{margin-top:28px;padding:18px 0}
+.logo-row{display:flex;gap:28px;align-items:center;justify-content:center;color:rgba(234,240,255,0.7);font-weight:700;flex-wrap:wrap}
+
+/* Sections */
+.section{padding:56px 0}
+.section.alt{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
+.section h2{margin:0 0 12px;font-size:22px}
+.section-lead{color:rgba(234,240,255,0.85);margin-bottom:18px}
+
+/* Carousel */
+.carousel{position:relative;display:flex;align-items:center;gap:12px}
+.carousel-track{display:flex;overflow:hidden;width:100%;border-radius:12px}
+.slide{min-width:100%;flex:0 0 100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;background:var(--glass)}
+.slide img{width:100%;height:320px;object-fit:cover;border-radius:10px;display:block}
+.carousel-btn{background:rgba(0,0,0,0.35);border:none;color:white;padding:10px 14px;border-radius:8px;cursor:pointer}
+.carousel-dots{display:flex;gap:8px;justify-content:center;margin-top:12px}
+.carousel-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.12);cursor:pointer}
+.carousel-dot.active{background:linear-gradient(90deg,#ff7a59,#ff3d8f)}
+
+/* Robotics card */
+.card{display:flex;gap:20px;align-items:center;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.5)}
+.robotics-photo{width:320px;height:220px;background:#0f2a66;border-radius:10px;background-size:cover;background-position:center}
+.robotics-copy{flex:1}
+
+/* Merch grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.merch-item{background:var(--glass);padding:14px;border-radius:12px;text-align:center;cursor:pointer;transition:transform 0.18s ease, box-shadow 0.18s ease}
+.merch-item:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+.merch-item .img{height:160px;border-radius:10px;background:#0f2a66;background-size:cover;background-position:center;margin-bottom:10px}
+
+/* Timeline */
+.timeline{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.timeline li{background:var(--glass);padding:12px;border-radius:10px;display:flex;gap:12px;align-items:flex-start}
+.timeline strong{min-width:64px;color:var(--muted)}
+
+/* Stats */
+.stats-grid{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px}
+.stat{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px;min-width:180px;text-align:center}
+.stat h3{margin:0;font-size:28px;color:#fff}
+
+/* Contact */
+.contact-form{display:grid;gap:12px;max-width:640px}
+.contact-form input,.contact-form textarea{padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff}
+
+/* Footer */
+.site-footer{padding:28px 0;color:rgba(234,240,255,0.6);text-align:center}
+
+/* Responsive */
+@media (max-width:980px){
+  .hero-inner{flex-direction:column-reverse;text-align:center}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .nav{display:none}
+}
+@media (max-width:640px){
+  .grid{grid-template-columns:1fr}
+  .merch-item .img{height:140px}
+}
