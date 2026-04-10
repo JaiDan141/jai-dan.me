@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Protected</title>
+<style>
+  body {
+    background:#0b1a3a;
+    color:white;
+    font-family:Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+  }
+  .box {
+    background:rgba(255,255,255,0.08);
+    padding:30px;
+    border-radius:12px;
+    text-align:center;
+    width:300px;
+  }
+  input {
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border-radius:8px;
+    border:none;
+  }
+  button {
+    margin-top:15px;
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:#ff3d8f;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    <h2>Enter Password</h2>
+    <input type="password" id="pw" placeholder="Password">
+    <button onclick="check()">Enter</button>
+    <p id="msg" style="color:#ff6b6b;margin-top:10px;"></p>
+  </div>
+
+<script>
+function check() {
+  const pw = document.getElementById("pw").value;
+  if (pw === "starlight") {
+    window.location.href = "index.html";
+  } else {
+    document.getElementById("msg").textContent = "Incorrect password";
+  }
+}
+</script>
+</body>
+</html>
