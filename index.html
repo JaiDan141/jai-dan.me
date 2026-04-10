@@ -4,570 +4,11 @@
   <meta charset="UTF-8" />
   <title>Jai Dan – Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-alt: #0b1020;
-      --accent: #7c3aed;
-      --accent-soft: rgba(124, 58, 237, 0.2);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --card: #111827;
-      --border: #1f2937;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.6);
-      --transition-fast: 0.25s ease-out;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 32px 16px 80px;
-      position: relative;
-    }
-
-    /* Floating background orbs */
-    .orb {
-      position: fixed;
-      border-radius: 999px;
-      filter: blur(40px);
-      opacity: 0.35;
-      z-index: -1;
-      pointer-events: none;
-      mix-blend-mode: screen;
-    }
-    .orb--purple {
-      width: 260px;
-      height: 260px;
-      background: #7c3aed;
-      top: -40px;
-      right: -40px;
-    }
-    .orb--blue {
-      width: 220px;
-      height: 220px;
-      background: #22d3ee;
-      bottom: -60px;
-      left: -40px;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 40px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .logo {
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    nav {
-      display: flex;
-      gap: 16px;
-      font-size: 0.9rem;
-    }
-
-    nav a {
-      padding: 6px 10px;
-      border-radius: 999px;
-      color: var(--muted);
-      border: 1px solid transparent;
-      transition: border-color var(--transition-fast), color var(--transition-fast),
-        background var(--transition-fast), transform 0.15s ease-out;
-    }
-
-    nav a:hover {
-      border-color: var(--accent-soft);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text);
-      transform: translateY(-1px);
-    }
-
-    /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 32px;
-      align-items: center;
-      margin-bottom: 56px;
-      position: relative;
-      z-index: 1;
-    }
-
-    @media (max-width: 840px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .hero-text h1 {
-      font-size: clamp(2.4rem, 4vw, 3.2rem);
-      line-height: 1.1;
-      margin-bottom: 12px;
-    }
-
-    .hero-text h1 span {
-      background: linear-gradient(120deg, #a855f7, #22d3ee);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-
-    .tag {
-      font-size: 0.75rem;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .btn {
-      border-radius: 999px;
-      padding: 10px 18px;
-      font-size: 0.9rem;
-      border: 1px solid transparent;
-      cursor: pointer;
-      background: transparent;
-      color: var(--text);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: background var(--transition-fast), border-color var(--transition-fast),
-        transform 0.15s ease-out, box-shadow var(--transition-fast);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #7c3aed, #22d3ee);
-      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.45);
-    }
-
-    .btn-ghost {
-      border-color: rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent-soft);
-      transform: translateY(-1px);
-    }
-
-    .hero-visual {
-      perspective: 1200px;
-    }
-
-    .hero-card {
-      background: radial-gradient(circle at top left, #1f2937 0, #020617 55%);
-      border-radius: 24px;
-      padding: 20px;
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      box-shadow: var(--shadow-soft);
-      transform-style: preserve-3d;
-      transition: transform 0.15s ease-out, box-shadow 0.2s ease-out;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 60%);
-      opacity: 0.9;
-      pointer-events: none;
-    }
-
-    .hero-card-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-chip {
-      font-size: 0.7rem;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 16px;
-      background: rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-chip-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .stat {
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1rem;
-      color: var(--text);
-    }
-
-    .hero-media {
-      margin-top: 18px;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: #020617;
-      position: relative;
-    }
-
-    .hero-media video,
-    .hero-media img {
-      width: 100%;
-      display: block;
-      object-fit: cover;
-      max-height: 220px;
-    }
-
-    .hero-media-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent 55%);
-      pointer-events: none;
-    }
-
-    .hero-media-caption {
-      position: absolute;
-      left: 14px;
-      bottom: 12px;
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    /* Sections */
-    section {
-      margin-bottom: 48px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .section-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .section-title {
-      font-size: 1.4rem;
-      margin-bottom: 16px;
-    }
-
-    .section-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 24px;
-    }
-
-    @media (max-width: 840px) {
-      .section-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .card {
-      background: radial-gradient(circle at top left, #111827 0, #020617 60%);
-      border-radius: var(--radius-lg);
-      padding: 18px 18px 16px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-soft);
-      transform-style: preserve-3d;
-      transition: transform 0.18s ease-out, box-shadow 0.2s ease-out,
-        border-color 0.2s ease-out, background 0.2s ease-out;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card:hover {
-      border-color: rgba(129, 140, 248, 0.7);
-      box-shadow: 0 22px 55px rgba(15, 23, 42, 0.9);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 8px;
-      gap: 12px;
-    }
-
-    .card-title {
-      font-size: 1.05rem;
-    }
-
-    .card-meta {
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-align: right;
-    }
-
-    .card-body {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 10px;
-    }
-
-    .pill {
-      font-size: 0.7rem;
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      color: #e5e7eb;
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .media-frame {
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: #020617;
-      position: relative;
-    }
-
-    .media-frame img,
-    .media-frame video {
-      width: 100%;
-      display: block;
-      object-fit: cover;
-      max-height: 260px;
-    }
-
-    .media-caption {
-      font-size: 0.75rem;
-      color: var(--muted);
-      padding: 8px 10px;
-      background: rgba(15, 23, 42, 0.96);
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
-    }
-
-    /* Carousel */
-    .carousel {
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: #020617;
-    }
-
-    .carousel-track {
-      display: flex;
-      transition: transform 0.4s ease-out;
-    }
-
-    .carousel-slide {
-      min-width: 100%;
-      position: relative;
-    }
-
-    .carousel-slide img {
-      width: 100%;
-      display: block;
-      object-fit: cover;
-      max-height: 260px;
-    }
-
-    .carousel-controls {
-      position: absolute;
-      inset: auto 10px 10px 10px;
-      display: flex;
-      justify-content: space-between;
-      pointer-events: none;
-    }
-
-    .carousel-btn {
-      pointer-events: auto;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.96);
-      color: var(--text);
-      font-size: 0.75rem;
-      padding: 6px 10px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: background 0.15s ease-out, transform 0.1s ease-out;
-    }
-
-    .carousel-btn:hover {
-      background: rgba(30, 64, 175, 0.96);
-      transform: translateY(-1px);
-    }
-
-    .carousel-dots {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 6px;
-      pointer-events: none;
-    }
-
-    .carousel-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.7);
-      pointer-events: auto;
-      cursor: pointer;
-      transition: background 0.15s ease-out, transform 0.15s ease-out;
-    }
-
-    .carousel-dot.active {
-      background: #22d3ee;
-      transform: scale(1.2);
-    }
-
-    /* Timeline list */
-    .timeline {
-      border-left: 1px solid rgba(55, 65, 81, 0.9);
-      padding-left: 14px;
-      margin-top: 6px;
-    }
-
-    .timeline-item {
-      margin-bottom: 10px;
-      position: relative;
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -14px;
-      top: 4px;
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22d3ee;
-      box-shadow: 0 0 10px rgba(34, 211, 238, 0.9);
-    }
-
-    .timeline-title {
-      font-size: 0.9rem;
-      color: #e5e7eb;
-    }
-
-    .timeline-meta {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    /* Footer */
-    footer {
-      margin-top: 40px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
-      font-size: 0.8rem;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: var(--muted);
-      text-decoration: underline;
-      text-decoration-style: dotted;
-      text-underline-offset: 3px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <!-- Floating Orbs -->
   <div class="orb orb--purple"></div>
   <div class="orb orb--blue"></div>
 
@@ -580,7 +21,11 @@
         <a href="#merch">Merch</a>
         <a href="#events">Events</a>
         <a href="#budget">Budget</a>
+        <a href="#resume">Resume</a>
       </nav>
+
+      <!-- Theme Toggle -->
+      <button id="theme-toggle" class="theme-toggle">🌙</button>
     </header>
 
     <!-- HERO -->
@@ -591,19 +36,17 @@
           Student leader, organizer, and builder. From NYPD x GAP service to robotics, 
           multimillion‑dollar budgets, and campus‑wide events—this is the work I’ve poured myself into.
         </p>
+
         <div class="hero-tags">
-          <span class="tag">Student Government &amp; Leadership</span>
-          <span class="tag">Operations &amp; Budgeting</span>
-          <span class="tag">Event Design &amp; Logistics</span>
+          <span class="tag">Student Government</span>
+          <span class="tag">Leadership</span>
+          <span class="tag">Event Design</span>
           <span class="tag">Community Building</span>
         </div>
+
         <div class="hero-cta">
-          <button class="btn btn-primary" onclick="document.querySelector('#events').scrollIntoView({behavior:'smooth'})">
-            View my impact
-          </button>
-          <button class="btn btn-ghost" onclick="document.querySelector('#nypd-gap').scrollIntoView({behavior:'smooth'})">
-            Explore projects
-          </button>
+          <button class="btn btn-primary" onclick="scrollToSection('events')">View my impact</button>
+          <button class="btn btn-ghost" onclick="scrollToSection('nypd-gap')">Explore projects</button>
         </div>
       </div>
 
@@ -614,33 +57,20 @@
               <span class="hero-chip-dot"></span>
               Live portfolio preview
             </div>
+
             <div class="hero-stats">
-              <div class="stat">
-                <strong>$5.1M+</strong>
-                Annual student budget overseen
-              </div>
-              <div class="stat">
-                <strong>130+ clubs</strong>
-                Congress of Club Presidents
-              </div>
-              <div class="stat">
-                <strong>900K</strong>
-                Reallocated toward tuition relief
-              </div>
-              <div class="stat">
-                <strong>1.2M</strong>
-                Student fees redistributed to support students
-              </div>
+              <div class="stat"><strong>$5.1M+</strong>Annual student budget overseen</div>
+              <div class="stat"><strong>130+ clubs</strong>Congress of Club Presidents</div>
+              <div class="stat"><strong>900K</strong>Reallocated toward tuition relief</div>
+              <div class="stat"><strong>1.2M</strong>Redistributed student fees</div>
             </div>
-            <div class="hero-media" style="margin-top:18px;">
-              <!-- Placeholder video or image -->
+
+            <div class="hero-media">
               <video autoplay muted loop playsinline>
-                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" />
               </video>
               <div class="hero-media-overlay"></div>
-              <div class="hero-media-caption">
-                Placeholder reel – replace with highlight video of your work.
-              </div>
+              <div class="hero-media-caption">Placeholder reel – replace with your highlight video.</div>
             </div>
           </div>
         </div>
@@ -649,293 +79,174 @@
 
     <!-- NYPD x GAP -->
     <section id="nypd-gap">
-      <div class="section-label">Service &amp; Community</div>
+      <div class="section-label">Service & Community</div>
       <h2 class="section-title">NYPD x GAP Service Program</h2>
+
       <div class="section-grid">
         <div class="card js-tilt">
-          <div class="card-header">
-            <h3 class="card-title">Bridging youth, community, and public service</h3>
-            <div class="card-meta">NYPD x GAP • Service Initiative</div>
-          </div>
-          <div class="card-body">
+          <h3 class="card-title">Bridging youth, community, and public service</h3>
+          <p class="card-body">
             I participated in the NYPD x GAP service program, working alongside officers, mentors, 
-            and peers to build trust, communication, and opportunity between young people and law enforcement. 
-            My role focused on showing up consistently, listening deeply, and helping create a safer, more 
-            connected environment for everyone involved.
-          </div>
+            and peers to build trust, communication, and opportunity between young people and law enforcement.
+          </p>
+
           <div class="pill-row">
             <span class="pill">Community Engagement</span>
             <span class="pill">Youth Leadership</span>
             <span class="pill">Public Service</span>
           </div>
-          <p class="card-body" style="margin-bottom:4px;">
-            Below is a carousel of placeholder photos. I’ll replace these with real images from the program— 
-            events, group photos, and moments that mattered.
-          </p>
         </div>
 
+        <!-- Carousel -->
         <div class="carousel js-tilt" data-carousel>
           <div class="carousel-track">
-            <div class="carousel-slide">
-              <img src="https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Community meeting placeholder" />
-            </div>
-            <div class="carousel-slide">
-              <img src="https://images.pexels.com/photos/3052727/pexels-photo-3052727.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Teamwork placeholder" />
-            </div>
-            <div class="carousel-slide">
-              <img src="https://images.pexels.com/photos/2422294/pexels-photo-2422294.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="City and service placeholder" />
-            </div>
+            <div class="carousel-slide"><img src="https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg" /></div>
+            <div class="carousel-slide"><img src="https://images.pexels.com/photos/3052727/pexels-photo-3052727.jpeg" /></div>
+            <div class="carousel-slide"><img src="https://images.pexels.com/photos/2422294/pexels-photo-2422294.jpeg" /></div>
           </div>
+
           <div class="carousel-controls">
-            <button class="carousel-btn" data-prev>&larr; Prev</button>
-            <button class="carousel-btn" data-next>Next &rarr;</button>
+            <button class="carousel-btn" data-prev>Prev</button>
+            <button class="carousel-btn" data-next>Next</button>
           </div>
+
           <div class="carousel-dots"></div>
         </div>
       </div>
     </section>
 
-    <!-- Robotics -->
+    <!-- ROBOTICS -->
     <section id="robotics">
-      <div class="section-label">STEM &amp; Robotics</div>
+      <div class="section-label">STEM & Robotics</div>
       <h2 class="section-title">High School Robotics – Finalist Team</h2>
+
       <div class="section-grid">
         <div class="card js-tilt">
-          <div class="card-header">
-            <h3 class="card-title">Building a robot that made the finals</h3>
-            <div class="card-meta">Robotics Team • High School</div>
-          </div>
-          <div class="card-body">
-            In high school, I was part of a robotics team that designed, built, and programmed a robot 
-            that advanced all the way to the finals. I contributed to both the build and the strategy— 
-            problem‑solving under pressure, iterating quickly, and working as a tight unit with my teammates.
-          </div>
-          <div class="pill-row">
-            <span class="pill">Mechanical Build</span>
-            <span class="pill">Team Collaboration</span>
-            <span class="pill">Competition Strategy</span>
-          </div>
-          <p class="card-body" style="margin-bottom:4px;">
-            I’ll add a team photo here: the full robotics squad and the robot we took to the finals.
+          <h3 class="card-title">Building a robot that made the finals</h3>
+          <p class="card-body">
+            I helped design, build, and strategize for a robot that advanced to the finals in competition.
           </p>
         </div>
 
         <div class="media-frame js-tilt">
-          <img src="https://images.pexels.com/photos/3912981/pexels-photo-3912981.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Robotics placeholder" />
-          <div class="media-caption">
-            Placeholder robotics team image – replace with your real team photo and robot.
-          </div>
+          <img src="https://images.pexels.com/photos/3912981/pexels-photo-3912981.jpeg" />
+          <div class="media-caption">Placeholder robotics image</div>
         </div>
       </div>
     </section>
 
-    <!-- Merch -->
+    <!-- MERCH -->
     <section id="merch">
-      <div class="section-label">Design &amp; Branding</div>
-      <h2 class="section-title">Queens College Merchandise &amp; Products</h2>
+      <div class="section-label">Design & Branding</div>
+      <h2 class="section-title">Queens College Merchandise</h2>
+
       <div class="section-grid">
         <div class="card js-tilt">
-          <div class="card-header">
-            <h3 class="card-title">Designing what students actually want to wear</h3>
-            <div class="card-meta">Queens College • 2023–2026</div>
-          </div>
-          <div class="card-body">
-            I’ve created and overseen merchandise and products for Queens College—pieces that students 
-            actually want to wear and use. This includes t‑shirts, backpacks, hats, towels, varsity jackets, 
-            and pins, all designed to reflect school pride and student identity.
-          </div>
-          <div class="pill-row">
-            <span class="pill">Branding</span>
-            <span class="pill">Merch Strategy</span>
-            <span class="pill">Student Experience</span>
-          </div>
-          <p class="card-body" style="margin-bottom:4px;">
-            I’ll replace these placeholders with real product shots: flat‑lays, students wearing the merch, 
-            and close‑ups of details.
+          <h3 class="card-title">Designing what students actually want to wear</h3>
+          <p class="card-body">
+            I’ve created t‑shirts, backpacks, hats, towels, varsity jackets, and pins for Queens College.
           </p>
         </div>
 
         <div class="media-frame js-tilt">
-          <img src="https://images.pexels.com/photos/7671166/pexels-photo-7671166.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Merch placeholder" />
-          <div class="media-caption">
-            Placeholder merch image – swap in photos of QC t‑shirts, backpacks, hats, towels, jackets, and pins.
-          </div>
+          <img src="https://images.pexels.com/photos/7671166/pexels-photo-7671166.jpeg" />
+          <div class="media-caption">Placeholder merch image</div>
         </div>
       </div>
     </section>
 
-    <!-- Events -->
+    <!-- EVENTS -->
     <section id="events">
-      <div class="section-label">Events &amp; Campus Life</div>
-      <h2 class="section-title">Events I’ve Hosted at Queens College (2023–2026)</h2>
+      <div class="section-label">Events & Campus Life</div>
+      <h2 class="section-title">Events I’ve Hosted (2023–2026)</h2>
+
       <div class="section-grid">
         <div class="card js-tilt">
-          <div class="card-header">
-            <h3 class="card-title">Designing experiences that bring people together</h3>
-            <div class="card-meta">Queens College • 2023–2026</div>
-          </div>
-          <div class="card-body">
-            From large‑scale dances to intimate trips and educational experiences, I’ve helped plan, host, 
-            and execute events that make campus feel alive and connected.
-          </div>
-          <div class="pill-row">
-            <span class="pill">Event Logistics</span>
-            <span class="pill">Student Government</span>
-            <span class="pill">Community Building</span>
-          </div>
+          <h3 class="card-title">Designing experiences that bring people together</h3>
+
           <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-title">Field trips &amp; off‑campus experiences</div>
-              <div class="timeline-meta">
-                Dorney Park, African History Museum, Halloween farm hunt – building memories beyond campus.
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-title">Congress of Club Presidents</div>
-              <div class="timeline-meta">
-                Gathered 130+ club presidents and e‑boards to go over rules, regulations, policies, and 
-                connect them with staff who support students.
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-title">Campus‑wide celebrations</div>
-              <div class="timeline-meta">
-                Halloween dances, award ceremonies, multicultural night, Latin night, Holi, and more.
-              </div>
-            </div>
+            <div class="timeline-item">Field trips: Dorney Park, African History Museum, Halloween Farm Hunt</div>
+            <div class="timeline-item">Congress of Club Presidents: 130+ clubs</div>
+            <div class="timeline-item">Campus celebrations: Halloween dances, multicultural night, Latin night, Holi</div>
           </div>
         </div>
 
         <div class="media-frame js-tilt">
-          <img src="https://images.pexels.com/photos/7648470/pexels-photo-7648470.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Events placeholder" />
-          <div class="media-caption">
-            Placeholder collage – later, swap in photos from Dorney Park, museum trips, dances, and cultural nights.
-          </div>
+          <img src="https://images.pexels.com/photos/7648470/pexels-photo-7648470.jpeg" />
+          <div class="media-caption">Placeholder event collage</div>
         </div>
       </div>
     </section>
 
-    <!-- Budget -->
+    <!-- BUDGET -->
     <section id="budget">
-      <div class="section-label">Finance &amp; Strategy</div>
-      <h2 class="section-title">Budget Management &amp; Student Impact</h2>
+      <div class="section-label">Finance & Strategy</div>
+      <h2 class="section-title">Budget Management & Student Impact</h2>
+
       <div class="section-grid">
         <div class="card js-tilt">
-          <div class="card-header">
-            <h3 class="card-title">Turning numbers into real support for students</h3>
-            <div class="card-meta">Queens College • Budget &amp; Governance</div>
-          </div>
-          <div class="card-body">
-            I’ve been part of budget meetings responsible for approving and managing a 
-            <strong>$5.1 million</strong> annual budget across organizations and clubs. 
-            My focus has always been simple: make sure the money actually reaches students.
-          </div>
-          <div class="pill-row">
-            <span class="pill">Budget Oversight</span>
-            <span class="pill">Policy &amp; Governance</span>
-            <span class="pill">Student Advocacy</span>
-          </div>
-          <div class="card-body">
-            I helped:
-            <ul style="margin:6px 0 0 18px; padding-left:0; font-size:0.9rem; color:var(--muted);">
-              <li>Reallocate <strong>$900,000</strong> to support tuition fees.</li>
-              <li>Redistribute <strong>$1.2 million</strong> in annual student fees to better support students, athletes, and academics.</li>
-            </ul>
-          </div>
+          <h3 class="card-title">Turning numbers into real support for students</h3>
+          <p class="card-body">
+            I helped oversee a $5.1M annual budget, reallocated $900K toward tuition relief, 
+            and redistributed $1.2M to support students, athletes, and academics.
+          </p>
         </div>
 
         <div class="media-frame js-tilt">
-          <img src="https://images.pexels.com/photos/6696152/pexels-photo-6696152.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Budget placeholder" />
-          <div class="media-caption">
-            Placeholder analytics dashboard – later, replace with visuals of budget charts or meeting photos.
-          </div>
+          <img src="https://images.pexels.com/photos/6696152/pexels-photo-6696152.jpeg" />
+          <div class="media-caption">Placeholder budget image</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME -->
+    <section id="resume">
+      <div class="section-label">Resume</div>
+      <h2 class="section-title">Professional Summary & Resume</h2>
+
+      <div class="resume-container">
+        <div class="resume-block js-tilt">
+          <h3 class="resume-title">Summary</h3>
+          <p class="resume-text">
+            Student leader, creative director, and operations strategist with experience in budgeting, 
+            event management, community engagement, robotics, and merchandise design.
+          </p>
+        </div>
+
+        <div class="resume-block js-tilt">
+          <h3 class="resume-title">Experience</h3>
+          <ul class="resume-list">
+            <li><strong>Congress of Club Presidents</strong> – Led 130+ clubs</li>
+            <li><strong>Budget Committee</strong> – Oversaw $5.1M annual budget</li>
+            <li><strong>NYPD x GAP Program</strong> – Community engagement</li>
+          </ul>
+        </div>
+
+        <div class="resume-block js-tilt">
+          <h3 class="resume-title">Skills</h3>
+          <ul class="resume-list">
+            <li>Leadership</li>
+            <li>Budgeting</li>
+            <li>Event Planning</li>
+            <li>Branding</li>
+            <li>Robotics</li>
+          </ul>
+        </div>
+
+        <div class="resume-block js-tilt">
+          <h3 class="resume-title">Education</h3>
+          <ul class="resume-list">
+            <li><strong>Queens College, CUNY</strong></li>
+          </ul>
         </div>
       </div>
     </section>
 
     <footer>
-      <div>&copy; <span id="year"></span> Jai Dan. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="#nypd-gap">Projects</a>
-        <a href="#events">Events</a>
-        <a href="#budget">Budget</a>
-      </div>
+      <div>&copy; <span id="year"></span> Jai Dan</div>
     </footer>
   </div>
 
-  <script>
-    // 3D tilt effect for cards and hero
-    (function () {
-      const tiltElements = document.querySelectorAll(".js-tilt");
-
-      function handleMove(e) {
-        const rect = this.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const midX = rect.width / 2;
-        const midY = rect.height / 2;
-        const rotateX = ((y - midY) / midY) * -8; // tilt up/down
-        const rotateY = ((x - midX) / midX) * 8;  // tilt left/right
-
-        this.style.transform =
-          "rotateX(" + rotateX.toFixed(2) + "deg) rotateY(" + rotateY.toFixed(2) + "deg) translateZ(8px)";
-      }
-
-      function resetTilt() {
-        this.style.transform = "rotateX(0deg) rotateY(0deg) translateZ(0)";
-      }
-
-      tiltElements.forEach((el) => {
-        el.addEventListener("mousemove", handleMove);
-        el.addEventListener("mouseleave", resetTilt);
-      });
-    })();
-
-    // Simple carousel logic
-    (function () {
-      const carousels = document.querySelectorAll("[data-carousel]");
-
-      carousels.forEach((carousel) => {
-        const track = carousel.querySelector(".carousel-track");
-        const slides = Array.from(carousel.querySelectorAll(".carousel-slide"));
-        const prevBtn = carousel.querySelector("[data-prev]");
-        const nextBtn = carousel.querySelector("[data-next]");
-        const dotsContainer = carousel.querySelector(".carousel-dots");
-        let index = 0;
-
-        // Create dots
-        slides.forEach((_, i) => {
-          const dot = document.createElement("div");
-          dot.className = "carousel-dot" + (i === 0 ? " active" : "");
-          dot.addEventListener("click", () => goToSlide(i));
-          dotsContainer.appendChild(dot);
-        });
-
-        const dots = Array.from(dotsContainer.children);
-
-        function update() {
-          const offset = -index * 100;
-          track.style.transform = "translateX(" + offset + "%)";
-          dots.forEach((d, i) => d.classList.toggle("active", i === index));
-        }
-
-        function goToSlide(i) {
-          index = (i + slides.length) % slides.length;
-          update();
-        }
-
-        prevBtn.addEventListener("click", () => goToSlide(index - 1));
-        nextBtn.addEventListener("click", () => goToSlide(index + 1));
-
-        // Auto-advance every 6 seconds
-        setInterval(() => {
-          goToSlide(index + 1);
-        }, 6000);
-      });
-    })();
-
-    // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
