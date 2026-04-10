@@ -1,253 +1,130 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jai — Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <a href="#hero" class="brand-link">Jai<span class="accent">.</span></a>
-      </div>
-      <nav class="nav" aria-label="Primary">
-        <a href="#work">Work</a>
-        <a href="#robotics">Robotics</a>
-        <a href="#merch">Merch</a>
-        <a href="#events">Events</a>
-        <a href="#budget">Budget</a>
-        <a href="#contact" class="cta">Contact</a>
-      </nav>
-      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+
+<header class="nav">
+  <div class="nav-left">jai-dan.me</div>
+  <div class="nav-right">
+    <a href="#work">Work</a>
+    <a href="#robotics">Robotics</a>
+    <a href="#merch">Merch</a>
+    <a href="#events">Events</a>
+    <a href="#budget">Budget</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="resume.pdf" class="resume">Resume</a>
+  </div>
+</header>
+
+<section class="hero">
+  <h1 class="hero-text">
+    I'm Jai, a Creative Director, Designer, and Student Leader based in 
+    <span class="circle-img img1"></span>
+    New York City
+    <span class="circle-img img2"></span>
+  </h1>
+
+  <p class="hero-sub">Bringing design, leadership, and community impact together.</p>
+
+  <div class="hero-buttons">
+    <a href="#contact" class="btn primary">Let’s work together</a>
+    <a href="#work" class="btn secondary">Explore my work</a>
+  </div>
+</section>
+
+<section id="work" class="section">
+  <h2>NYPD x GAP Service Project</h2>
+  <p class="section-desc">A collaborative service design initiative focused on community engagement and operational improvement.</p>
+
+  <div class="carousel">
+    <button class="carousel-btn prev">‹</button>
+    <div class="carousel-track">
+      <div class="slide"><img src="images/nypd1.jpg" alt=""></div>
+      <div class="slide"><img src="images/nypd2.jpg" alt=""></div>
+      <div class="slide"><img src="images/nypd3.jpg" alt=""></div>
     </div>
-  </header>
+    <button class="carousel-btn next">›</button>
+  </div>
+</section>
 
-  <main>
-    <section id="hero" class="hero" data-depth="0.02">
-      <div class="container hero-inner">
-        <div class="hero-left">
-          <p class="eyebrow">Certified Webflow Partner</p>
-          <h1>Make your product impossible to ignore</h1>
-          <p class="lead">I design and build premium, high-converting websites, brand systems, and physical merchandise for student organizations and startups.</p>
-          <div class="hero-ctas">
-            <a class="btn primary" href="#contact">Book a Discovery Call</a>
-            <a class="btn ghost" href="#work">See Case Studies</a>
-          </div>
-          <ul class="features">
-            <li>Built for growing startups</li>
-            <li>Express process and delivery</li>
-            <li>Easy to manage and update</li>
-          </ul>
-        </div>
+<section id="robotics" class="section alt">
+  <h2>Robotics Team</h2>
+  <p class="section-desc">I helped build a robot that advanced to the finals in regional competition.</p>
 
-        <div class="hero-right" id="parallax-stage" aria-hidden="false">
-          <div class="scene">
-            <div class="layer layer-bg" data-depth="0.04"></div>
-            <div class="layer layer-laptop" data-depth="0.08"></div>
-            <div class="layer layer-rocket" data-depth="0.14"></div>
-            <div class="layer layer-smoke" data-depth="0.06"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container logos">
-        <div class="logo-row">
-          <span>PRMG</span>
-          <span>aampe</span>
-          <span>O12 Global</span>
-          <span>QuotientAI</span>
-          <span>SELFPAY</span>
-          <span>SweePay</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="work" class="section">
-      <div class="container">
-        <h2>NYPD x GAP Service</h2>
-        <p class="section-lead">A collaborative service design project with NYPD and GAP focused on community outreach and service delivery. Below is a carousel showcasing the deliverables, mockups, and event photos.</p>
-
-        <div class="carousel" aria-roledescription="carousel" data-autoplay="true">
-          <button class="carousel-btn prev" aria-label="Previous slide">‹</button>
-          <div class="carousel-track">
-            <div class="slide" data-index="0">
-              <img data-src="images/nypd-gap-1.jpg" alt="NYPD x GAP project image 1" class="lazy">
-              <figcaption>Service blueprint and journey map</figcaption>
-            </div>
-            <div class="slide" data-index="1">
-              <img data-src="images/nypd-gap-2.jpg" alt="NYPD x GAP project image 2" class="lazy">
-              <figcaption>Field activation photos</figcaption>
-            </div>
-            <div class="slide" data-index="2">
-              <img data-src="images/nypd-gap-3.jpg" alt="NYPD x GAP project image 3" class="lazy">
-              <figcaption>Final deliverables and assets</figcaption>
-            </div>
-          </div>
-          <button class="carousel-btn next" aria-label="Next slide">›</button>
-          <div class="carousel-dots" role="tablist" aria-label="Slide dots"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="robotics" class="section alt">
-      <div class="container">
-        <h2>Robotics Team</h2>
-        <p class="section-lead">High school robotics team photo and project summary. I helped design and build a robot that advanced to the finals.</p>
-        <div class="card robotics-card">
-          <div class="robotics-photo placeholder" data-src="images/robotics-team.jpg" aria-hidden="false"></div>
-          <div class="robotics-copy">
-            <h3>Finalist Robot</h3>
-            <p>I contributed to mechanical design, control logic, and testing. The robot reached the finals and won awards for reliability and strategy.</p>
-            <ul>
-              <li>Role: Mechanical lead and controls support</li>
-              <li>Tools: SolidWorks, Arduino, ROS</li>
-              <li>Outcome: Finalist placement and regional awards</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="merch" class="section">
-      <div class="container">
-        <h2>Queens College Merchandise</h2>
-        <p class="section-lead">A selection of merchandise and product designs created for Queens College including apparel and accessories.</p>
-
-        <div class="grid merch-grid">
-          <div class="merch-item" data-tilt>
-            <div class="img placeholder" data-src="images/merch-shirt.jpg" aria-hidden="true"></div>
-            <h4>T-Shirts</h4>
-          </div>
-          <div class="merch-item" data-tilt>
-            <div class="img placeholder" data-src="images/merch-backpack.jpg" aria-hidden="true"></div>
-            <h4>Backpacks</h4>
-          </div>
-          <div class="merch-item" data-tilt>
-            <div class="img placeholder" data-src="images/merch-hat.jpg" aria-hidden="true"></div>
-            <h4>Hats</h4>
-          </div>
-          <div class="merch-item" data-tilt>
-            <div class="img placeholder" data-src="images/merch-towel.jpg" aria-hidden="true"></div>
-            <h4>Towels</h4>
-          </div>
-          <div class="merch-item" data-tilt>
-            <div class="img placeholder" data-src="images/merch-jacket.jpg" aria-hidden="true"></div>
-            <h4>Varsity Jackets</h4>
-          </div>
-          <div class="merch-item" data-tilt>
-            <div class="img placeholder" data-src="images/merch-pins.jpg" aria-hidden="true"></div>
-            <h4>Pins</h4>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="events" class="section alt">
-      <div class="container">
-        <h2>Events Hosted 2023–2026</h2>
-        <p class="section-lead">A curated timeline of events I organized and led for Queens College from 2023 to 2026.</p>
-
-        <ol class="timeline">
-          <li>
-            <strong>2023</strong>
-            <div class="event">
-              <h4>Field Trip to Donrey Park</h4>
-              <p>Outdoor learning and team-building activities.</p>
-            </div>
-          </li>
-          <li>
-            <strong>2023</strong>
-            <div class="event">
-              <h4>African History Museum Visit</h4>
-              <p>Educational trip with guided tours and workshops.</p>
-            </div>
-          </li>
-          <li>
-            <strong>2024</strong>
-            <div class="event">
-              <h4>Halloween Farm Hunt</h4>
-              <p>Community event with games and themed activities.</p>
-            </div>
-          </li>
-          <li>
-            <strong>2024</strong>
-            <div class="event">
-              <h4>Congress of Club Presidents</h4>
-              <p>Gathered 130+ club presidents and e-board members to review policies and coordinate with staff.</p>
-            </div>
-          </li>
-          <li>
-            <strong>2025</strong>
-            <div class="event">
-              <h4>Halloween Dance</h4>
-              <p>Large-scale student dance with live DJ and safety staff.</p>
-            </div>
-          </li>
-          <li>
-            <strong>2025</strong>
-            <div class="event">
-              <h4>Award Ceremonies and Multicultural Night</h4>
-              <p>Celebrations recognizing student achievements and cultural showcases.</p>
-            </div>
-          </li>
-          <li>
-            <strong>2026</strong>
-            <div class="event">
-              <h4>Holi and Latin Night</h4>
-              <p>Festival events celebrating cultural traditions and student groups.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section id="budget" class="section">
-      <div class="container">
-        <h2>Budget & Impact</h2>
-        <p class="section-lead">Oversight and allocation of student organization funds to maximize student benefit.</p>
-
-        <div class="stats-grid">
-          <div class="stat">
-            <h3>$5.1M</h3>
-            <p>Total budget managed across organizations</p>
-          </div>
-          <div class="stat">
-            <h3>$900k</h3>
-            <p>Reallocated to support tuition assistance and student needs</p>
-          </div>
-          <div class="stat">
-            <h3>$1.2M</h3>
-            <p>Redistributed in annual student fees to support athletes and academics</p>
-          </div>
-        </div>
-
-        <p class="note">I participated in budget meetings, approvals, and reallocation decisions to improve student outcomes and program access.</p>
-      </div>
-    </section>
-
-    <section id="contact" class="section alt contact-section">
-      <div class="container">
-        <h2>Contact</h2>
-        <p class="section-lead">Interested in working together or want to see more? Reach out.</p>
-        <form id="contactForm" class="contact-form" aria-label="Contact form">
-          <input type="text" name="name" placeholder="Your name" required>
-          <input type="email" name="email" placeholder="Your email" required>
-          <textarea name="message" rows="4" placeholder="Tell me about your project" required></textarea>
-          <button class="btn primary" type="submit">Send Message</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; <span id="year"></span> Jai. All rights reserved.</p>
+  <div class="robotics-card">
+    <div class="robotics-img"></div>
+    <div class="robotics-info">
+      <h3>Finalist Robot</h3>
+      <p>Mechanical design, control logic, and testing.</p>
+      <ul>
+        <li>Mechanical lead</li>
+        <li>SolidWorks, Arduino, ROS</li>
+        <li>Finalist placement</li>
+      </ul>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script src="script.js" defer></script>
+<section id="merch" class="section">
+  <h2>Queens College Merchandise</h2>
+  <p class="section-desc">A collection of apparel and products designed for QC organizations.</p>
+
+  <div class="merch-grid">
+    <div class="merch-item" data-tilt><div class="img merch1"></div><h4>T-Shirts</h4></div>
+    <div class="merch-item" data-tilt><div class="img merch2"></div><h4>Backpacks</h4></div>
+    <div class="merch-item" data-tilt><div class="img merch3"></div><h4>Hats</h4></div>
+    <div class="merch-item" data-tilt><div class="img merch4"></div><h4>Towels</h4></div>
+    <div class="merch-item" data-tilt><div class="img merch5"></div><h4>Varsity Jackets</h4></div>
+    <div class="merch-item" data-tilt><div class="img merch6"></div><h4>Pins</h4></div>
+  </div>
+</section>
+
+<section id="events" class="section alt">
+  <h2>Events Hosted (2023–2026)</h2>
+
+  <div class="timeline">
+    <div class="event"><strong>2023</strong> Donrey Park Field Trip</div>
+    <div class="event"><strong>2023</strong> African History Museum Visit</div>
+    <div class="event"><strong>2024</strong> Halloween Farm Hunt</div>
+    <div class="event"><strong>2024</strong> Congress of Club Presidents (130+ clubs)</div>
+    <div class="event"><strong>2025</strong> Halloween Dance</div>
+    <div class="event"><strong>2025</strong> Award Ceremonies & Multicultural Night</div>
+    <div class="event"><strong>2026</strong> Holi & Latin Night</div>
+  </div>
+</section>
+
+<section id="budget" class="section">
+  <h2>Budget & Impact</h2>
+
+  <div class="stats">
+    <div class="stat"><h3>$5.1M</h3><p>Budget managed</p></div>
+    <div class="stat"><h3>$900k</h3><p>Reallocated for tuition support</p></div>
+    <div class="stat"><h3>$1.2M</h3><p>Redistributed to student programs</p></div>
+  </div>
+</section>
+
+<section id="contact" class="section alt">
+  <h2>Contact</h2>
+  <form class="contact-form">
+    <input type="text" placeholder="Your name">
+    <input type="email" placeholder="Your email">
+    <textarea placeholder="Your message"></textarea>
+    <button class="btn primary">Send</button>
+  </form>
+</section>
+
+<footer class="footer">
+  © <span id="year"></span> Jai. All rights reserved.
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
